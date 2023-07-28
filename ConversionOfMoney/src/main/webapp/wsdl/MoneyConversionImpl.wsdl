@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ars.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ars.com" xmlns:intf="http://ars.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ars.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="RToD">
+    <complexType>
+     <sequence>
+      <element name="m" type="impl:Money"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Money">
+    <sequence>
+     <element name="money" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <element name="RToDResponse">
+    <complexType>
+     <sequence>
+      <element name="RToDReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="DToR">
+    <complexType>
+     <sequence>
+      <element name="m" type="impl:Money"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="DToRResponse">
+    <complexType>
+     <sequence>
+      <element name="DToRReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="RToDResponse">
+
+      <wsdl:part element="impl:RToDResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="DToRRequest">
+
+      <wsdl:part element="impl:DToR" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="RToDRequest">
+
+      <wsdl:part element="impl:RToD" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="DToRResponse">
+
+      <wsdl:part element="impl:DToRResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MoneyConversionImpl">
+
+      <wsdl:operation name="RToD">
+
+         <wsdl:input message="impl:RToDRequest" name="RToDRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:RToDResponse" name="RToDResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="DToR">
+
+         <wsdl:input message="impl:DToRRequest" name="DToRRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:DToRResponse" name="DToRResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MoneyConversionImplSoapBinding" type="impl:MoneyConversionImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="RToD">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="RToDRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="RToDResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="DToR">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="DToRRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="DToRResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MoneyConversionImplService">
+
+      <wsdl:port binding="impl:MoneyConversionImplSoapBinding" name="MoneyConversionImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/ConversionOfMoney/services/MoneyConversionImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
